@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMLLR | Url Shortner</title>
+</head>
+<body>
+    <h3>SMLLR</h3>
+    <form>
+        <input type="url" placeholder="URL">
+        <button>Submit</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>Full Url</tr>
+            <tr>Short Url</tr>
+            <tr>Click</tr>
+        </thead>
+        <tbody>
+            <% urls.forEach(element => { %>
+                <tr><%= fUrl %></tr>
+                <tr><%= sUrl %></tr>
+                <tr><%= Clicks %></tr>
+            <% }); %>
+            
+        </tbody>
+    </table>
+</body>
+</html>
