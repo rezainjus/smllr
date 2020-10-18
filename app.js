@@ -16,19 +16,19 @@ app.get('/', async (req,res) => {
 })
 
 app.post('/shortUrls', async (req,res) => {
-    await shortUrl.create({full: req.body.fUrl})
+    await ShortUrl.create({full: req.body.fullUrl})
 
     res.redirect('/')
 })
 
 app.get("/:shortUrl", async (req,res) => {
-    const shortUrl = await ShortUrl.findOne({short: req.params.sUrl})
-    if (shortUrl == null) return res.statusCode(404)
+    const shortUrl = await ShortUrl.findOne({short: req.params.shortUrl})
+    if (shortUrl == null) return res.sendStatus(404)
 
     shortUrl.click++
     shortUrl.save()
 
-    res.redirect(shortUrl.fUrl)
+    res.redirect(shortUrl.full)
 })
 
 app.listen(3000)

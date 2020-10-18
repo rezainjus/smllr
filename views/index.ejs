@@ -4,28 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMLLR | Url Shortner</title>
-</head>
-<body>
-    <h3>SMLLR</h3>
-    <form>
-        <input type="url" placeholder="URL">
-        <button>Submit</button>
-    </form>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 
-    <table>
-        <thead>
-            <tr>Full Url</tr>
-            <tr>Short Url</tr>
-            <tr>Click</tr>
-        </thead>
-        <tbody>
-            <% urls.forEach(element => { %>
-                <tr><%= fUrl %></tr>
-                <tr><%= sUrl %></tr>
-                <tr><%= Clicks %></tr>
-            <% }); %>
-            
-        </tbody>
-    </table>
+</head>
+<body class="has-background-info is-fullheight is-justify-content-center is-flex-direction-column" style="height: 100vh;display: flex;">
+    <h3 class="has-text-centered is-family-sans-serif has-text-weight-bold is-size-1 is-half
+    is-offset-one-quarter has-text-white">SMLLR</h3>
+    <div class="content column is-half is-offset-one-quarter">
+        <form action="/shortUrls" method="POST" class="field is-centered is-half is-offset-one-quarter is-grouped is-grouped-centered">
+            <input class="input is-primary column is-half" required placeholder="Url" type="url" name="fullUrl" id="fullUrl" type="url" placeholder="URL">
+            <button class="button is-primary is-light">Submit</button>
+        </form>
+
+        <table class="table is-striped is-hoverable is-bordered has-text-primary is-grouped">
+            <thead>
+                <tr>
+                    <th>Full Url</th>
+                    <th>Short Url</th>
+                    <th>Click</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% urls.forEach(url => { %>
+                    <tr>
+                        <td><a href="<%= url.full %>"><%= url.full %></a></td>
+                        <td><a href="<%= url.short %>"><%= url.short %></a></td>
+                        <td><%= url.clicks %></td>
+                    </tr>
+                <% }); %>
+                
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
